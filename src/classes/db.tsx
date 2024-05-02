@@ -1,11 +1,12 @@
-
 export type FS = typeof import("fs/promises");
 export type Electron = typeof import("electron");
 export type Path = typeof import("path");
+export type Mongoose = typeof import("mongoose");
 
 const fs = window.require("fs/promises") as FS;
 const { join } = window.require("path");
 const { ipcRenderer } = window.require("electron/renderer");
+const mongoose = window.require("mongoose") as Mongoose;
 
 export default class Db {
     static async getUrlFilePath() {
@@ -35,5 +36,28 @@ export default class Db {
 
 
         return false;
+    }
+
+    static async getConnection(username: string, password: string) {
+        const url = await this.getUrl();
+        if (!url) return false;
+        const fullUrl = url.replace("<username>", username).replace("<password>", password);
+
+        try {
+            const connection = await mongoose.connect(fullUrl);
+            return connection;
+        }
+        catch (err) {
+            console.log(err, fullUrl);
+
+            return false;
+        }
+    }
+
+    static async closeAllConnections() {
+        const connections = mongoose.connections;
+        for (const connection of connections) {
+            await connection.close();
+        }
     }
 }

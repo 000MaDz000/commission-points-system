@@ -28,7 +28,7 @@ export default function LoginForm() {
         else if (null !== err) {
             setErr(true)
         }
-    }, [url]);
+    }, [url, err]);
 
     useEffect(() => {
         Db.getUrl().then(res => {
@@ -36,7 +36,7 @@ export default function LoginForm() {
                 navigate("/db-credentials");
             }
         });
-    }, []);
+    }, [navigate]);
 
 
     return (
