@@ -9,12 +9,16 @@ export default function LoginForm() {
 
     const onsubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
+
         if (!url || typeof url !== "string") {
             setErr("please write the database url");
             return;
         };
 
-        navigate("/db-credentials");
+        Db.setUrl(url).then(() => {
+            navigate("/db-credentials");
+        });
+
     }
 
     useEffect(() => {
