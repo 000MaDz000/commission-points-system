@@ -1,7 +1,11 @@
+import RfidWaiter from "../components/rfid-waiter";
+import Sidebar from "../components/sidebar";
+
 export default function HomePage() {
     return (
-        <div>
-            <h1>home page</h1>
+        <div dir={"rtl"} className="flex h-screen">
+            <Sidebar />
+            <RfidWaiter />
         </div>
     )
 }

@@ -1,0 +1,15 @@
+.radar-wave .circle {
+    animation: radar-wave 5s infinite;
+}
+
+@keyframes radar-wave {
+    0% {
+        scale: 0;
+        opacity: 1;
+    }
+
+    100% {
+        scale: 1;
+        opacity: 0;
+    }
+}
