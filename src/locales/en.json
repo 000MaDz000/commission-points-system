@@ -1,3 +1,14 @@
 {
-    "h": "hellloooooooo"
+    "db.credentials.login": "plesae write database account",
+    "person.data.name": "Name",
+    "person.data.nationalId": "National ID",
+    "person.data.birthDate": "Birth Date",
+    "person.data.gender": "Gender",
+    "person.data.address": "Address",
+    "person.data.phone": "Phone",
+    "person.data.email": "Email",
+    "person.data.gender.male": "Male",
+    "person.data.gender.female": "Female",
+    "submit_button": "Submit",
+    "rfid.awaiter.message": "please enter identification card"
 }

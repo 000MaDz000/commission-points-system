@@ -1,12 +1,14 @@
 import { FormEventHandler, useEffect, useState } from "react";
 import Db from "../classes/db";
 import { useNavigate } from "react-router";
+import useTranslation from "../hooks/useTranslation";
 
 
 export default function DbCredentialsForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [err, setErr] = useState(false);
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
     const onsubmit: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -30,7 +32,7 @@ export default function DbCredentialsForm() {
 
     return (
         <form className="flex flex-col gap-12 shadow p-16 bg-white w-[75%] lg:w-1/2" onSubmit={onsubmit}>
-            <h1 className="font-bold text-lg text-center">يرجى كتابة حساب قاعدة البيانات</h1>
+            <h1 className="font-bold text-lg text-center">{t("db.credentials.login")}</h1>
 
             <div className="flex flex-col gap-5">
                 <input autoComplete="username" type={"text"} onChange={(e) => setUsername(e.target.value)} name="username" placeholder="username" className={`py-3 px-5 shadow-slate-600 rounded border-2 focus:border-slate-700 outline-none transition-colors ${err ? "border-red-700" : ""}`} />
