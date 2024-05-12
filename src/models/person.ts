@@ -42,6 +42,10 @@ const personSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    points: {
+        type: Number,
+        default: 0,
+    }
 });
 
 export interface PersonType {
@@ -54,6 +58,7 @@ export interface PersonType {
     email?: string;
     createdAt: Date;
     updatedAt: Date;
+    points: number;
 }
 
 const Person = model("Person", personSchema) as Model<PersonType>;

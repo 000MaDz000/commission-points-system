@@ -18,4 +18,7 @@ const cardSchema = new Schema({
 
 const Card = model("Card", cardSchema);
 
+cardSchema.index({ code: 1 });
+cardSchema.index({ person: 1 });
+
 export default Card;
