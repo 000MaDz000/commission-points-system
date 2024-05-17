@@ -1,4 +1,5 @@
 import { Mongoose } from "../classes/db";
+import Person from "./person";
 
 const { Schema, model } = window.require("mongoose") as Mongoose;
 
@@ -30,5 +31,27 @@ interface PointsType {
 pointsSchema.index({ date: 1, points: 1 });
 pointsSchema.index({ person: 1 });
 const Points = model<PointsType>("points", pointsSchema);
+
+export async function addPoints(personId: string, points: number, note?: string) {
+    const personObj = await Person.findById(personId);
+
+    if (!personObj) throw new Error("404");
+
+    personObj.points += points;
+
+    const pointsObj = new Points({
+        person: personId,
+        note,
+        points
+    });
+
+
+    await Promise.all([
+        pointsObj.save(),
+        personObj.save()
+    ]);
+
+    return 200
+}
 
 export default Points;
