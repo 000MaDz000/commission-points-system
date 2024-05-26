@@ -11,10 +11,14 @@ const cardSchema = new Schema({
     person: {
         type: Schema.Types.ObjectId,
         ref: "Person",
-        unique: true,
         dropDups: true,
     }
 });
+
+export type CardType = {
+    code: string;
+    person: string;
+}
 
 const Card = model("Card", cardSchema);
 

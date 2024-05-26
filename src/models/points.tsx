@@ -21,7 +21,7 @@ const pointsSchema = new Schema({
 });
 
 
-interface PointsType {
+export interface PointsType {
     points: number;
     date: Date;
     person: string;
