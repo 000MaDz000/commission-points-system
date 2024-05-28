@@ -1,4 +1,4 @@
-import { Box, Drawer, List } from "@mui/material"
+import { Drawer, List } from "@mui/material"
 import useTranslation from "../hooks/useTranslation"
 import { Home, Settings, SettingsAccessibility, Style } from "@mui/icons-material";
 import SidebarItem from "./sidebar-item";
