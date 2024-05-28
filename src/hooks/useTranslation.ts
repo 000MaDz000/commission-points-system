@@ -11,5 +11,7 @@ export default function useTranslation() {
             return intl.formatMessage({ id });
         },
         changeLang: changeLang,
+        locale: intl.locale,
+        localeDir: intl.locale === "ar" ? "rtl" : "ltr",
     }
 }

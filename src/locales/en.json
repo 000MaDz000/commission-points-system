@@ -37,5 +37,9 @@
     "points.forms.change-points": "Add Or Remove From Points",
     "points.forms.submit-change": "Confirm",
     "points.forms.points-number": "Points Number",
+    "sidebar.home": "Home",
+    "sidebar.cards": "Cards",
+    "sidebar.peaple": "Peaple",
+    "sidebar.settings": "Settings",
     "rfid.awaiter.message": "please enter identification card"
 }
