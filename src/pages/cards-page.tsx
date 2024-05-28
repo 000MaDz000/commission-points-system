@@ -1,20 +1,22 @@
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import Layout from "../components/layout";
 import { useEffect, useState } from "react";
 import Card from "../models/card";
 import SetCardDataForm from "../components/set-card-data-form";
 import Modal from "../components/modal";
+import { ObjectId } from "mongoose";
 
 export default function CardsPage() {
     const { cardId } = useParams<{ cardId: string }>();
+    const navigate = useNavigate();
     // null means pending
     // undefined means not found
     // otherwise, the data is exists
-    const [cardData, setCardData] = useState<{} | null | undefined>(null);
+    const [cardData, setCardData] = useState<{ person: ObjectId } | null | undefined>(null);
 
     useEffect(() => {
         const cardFetcher = async () => {
-            const cardData = await Card.findOne({ code: cardId }).populate("person");
+            const cardData = await Card.findOne({ code: cardId });
 
             if (!cardData) {
                 setCardData(undefined);
@@ -31,23 +33,23 @@ export default function CardsPage() {
             cardFetcher();
         }
 
-    }, [cardData, cardId]);
+        // if the cardData exists
+        if (cardData) {
+            navigate("/person/" + cardData.person);
+        }
+
+    }, [cardData, cardId, navigate]);
 
     return (
-        <Layout>
-            <div className="w-full h-full">
-                {
-                    // undefined means there is no exists data about this card
-                    cardData === undefined && (
-                        <Modal onClose={() => { }}>
-                            <div className="w-screen">
-                                <SetCardDataForm cardId={cardId as string} onEnd={() => setCardData(null)} />
-                            </div>
-                        </Modal>
-                    )
-                }
-            </div>
-
-        </Layout>
+        <div className="w-full h-full">
+            {
+                // undefined means there is no exists data about this card
+                cardData === undefined && (
+                    <Modal onClose={() => { }} open>
+                        <SetCardDataForm cardId={cardId as string} onEnd={() => setCardData(null)} />
+                    </Modal>
+                )
+            }
+        </div>
     )
 }

@@ -7,6 +7,7 @@ import DbCredentialsPage from './pages/db-credentials';
 import HomePage from './pages/home';
 import CardsPage from './pages/cards-page';
 import { useIntl } from 'react-intl';
+import PersonPage from './pages/person';
 
 function App() {
   const intl = useIntl();
@@ -21,6 +22,7 @@ function App() {
           <Route path='/home' element={<HomePage />} />
           <Route path='/db-credentials' element={<DbCredentialsPage />} />
           <Route path='/cards/:cardId' element={<CardsPage />} />
+          <Route path="/person/:id" element={<PersonPage />} />
         </Routes>
       </div>
     </HashRouter>
