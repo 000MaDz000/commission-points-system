@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router"
-import Layout from "../components/layout";
 import { useEffect, useState } from "react";
 import Card from "../models/card";
 import SetCardDataForm from "../components/set-card-data-form";

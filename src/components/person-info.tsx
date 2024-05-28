@@ -1,8 +1,7 @@
-import { Box, Button, DialogTitle, TextField } from "@mui/material";
+import { Button, DialogTitle } from "@mui/material";
 import useTranslation from "../hooks/useTranslation";
 import { PersonType } from "../models/person";
 import { useState } from "react";
-import { Close } from "@mui/icons-material";
 import ChangePointsModal from "./change-points-modal";
 
 export default function PersonInfo({ person }: { person: PersonType }) {
