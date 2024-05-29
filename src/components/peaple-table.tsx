@@ -4,7 +4,7 @@ import { ObjectId } from "bson";
 import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import useTranslation from "../hooks/useTranslation";
 
-type Peaple = PersonType & { _id: string };
+export type Peaple = PersonType & { _id: string };
 export default function PeapleTable() {
     const [peaple, setPeaple] = useState<Peaple[]>([]);
     const [allDocumentsCount, setAllDocumentsCount] = useState(0);
@@ -54,7 +54,7 @@ export default function PeapleTable() {
                 <TableRow>
                     <TableCell>{person.name}</TableCell>
                     <TableCell colSpan={2}>{person.address}</TableCell>
-                    <TableCell>{person.nationalId}</TableCell>
+                    <TableCell>{currentYear() - person.birthDate.getFullYear()}</TableCell>
                 </TableRow>
                 {renderPageData(index + 1)}
             </>
