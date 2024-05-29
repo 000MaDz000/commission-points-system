@@ -1,6 +1,5 @@
 import { Container } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
-import { Peaple } from "./peaple-table";
 import Person from "../models/person";
 import { ScatterChart } from "@mui/x-charts";
 import useTranslation from "../hooks/useTranslation";
