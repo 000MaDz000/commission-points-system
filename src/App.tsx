@@ -8,6 +8,7 @@ import HomePage from './pages/home';
 import CardsPage from './pages/cards-page';
 import { useIntl } from 'react-intl';
 import PersonPage from './pages/person';
+import PeaplePage from './pages/peaple';
 
 function App() {
   const intl = useIntl();
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginPage />} />
           <Route path='/home' element={<HomePage />} />
+          <Route path='/peaple' element={<PeaplePage />} />
           <Route path='/db-credentials' element={<DbCredentialsPage />} />
           <Route path='/cards/:cardId' element={<CardsPage />} />
           <Route path="/person/:id" element={<PersonPage />} />

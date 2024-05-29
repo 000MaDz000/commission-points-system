@@ -32,6 +32,7 @@
     "charts.points.ylabel": "Points",
     "charts.points.positive": "positive",
     "charts.points.negative": "negative",
+    "charts.peaple.yLabel": "Peaple Count",
     "errors.error": "Error",
     "errors.cardAlreadyUser": "the card is already used",
     "points.forms.change-points": "Add Or Remove From Points",
