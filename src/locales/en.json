@@ -42,5 +42,8 @@
     "sidebar.cards": "Cards",
     "sidebar.peaple": "Peaple",
     "sidebar.settings": "Settings",
-    "rfid.awaiter.message": "please enter identification card"
+    "rfid.awaiter.message": "please enter identification card",
+    "settings.change-lang-title": "Languages",
+    "settings.language-selector": "select your language",
+    "settings.dburl": "database url"
 }

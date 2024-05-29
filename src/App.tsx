@@ -9,19 +9,20 @@ import CardsPage from './pages/cards-page';
 import { useIntl } from 'react-intl';
 import PersonPage from './pages/person';
 import PeaplePage from './pages/peaple';
+import SettingsPage from './pages/settings';
 
 function App() {
-  const intl = useIntl();
 
   return (
     <HashRouter >
       <title>Commission Points</title>
       <AutoHashrouterRedirector />
-      <div className="App" dir={intl.locale === "ar" ? "rtl" : "ltr"}>
+      <div className="App">
         <Routes>
           <Route path='/' element={<LoginPage />} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/peaple' element={<PeaplePage />} />
+          <Route path='/settings' element={<SettingsPage />} />
           <Route path='/db-credentials' element={<DbCredentialsPage />} />
           <Route path='/cards/:cardId' element={<CardsPage />} />
           <Route path="/person/:id" element={<PersonPage />} />
