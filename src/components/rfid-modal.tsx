@@ -1,6 +1,6 @@
 import RadarWaves from "./radar-waves";
 import CloseIcon from '@mui/icons-material/Close';
-import { Button, Modal } from "@mui/material";
+import { IconButton, Modal } from "@mui/material";
 import useRfid from "../hooks/use-rfid";
 import { useEffect } from "react";
 
@@ -18,7 +18,7 @@ export default function RfidModal({ onClose, onCard }: { onClose: () => void, on
         <Modal open onClose={onClose}>
             <div className="relative ">
                 <div className="m-4 flex bg-white w-fit rounded-sm">
-                    <Button color="error" startIcon={<CloseIcon />} onClick={onClose}></Button>
+                    <IconButton color="error" onClick={onClose}><CloseIcon /></IconButton>
                 </div>
                 <RadarWaves />
 

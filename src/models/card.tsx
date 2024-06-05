@@ -12,12 +12,17 @@ const cardSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Person",
         dropDups: true,
+    },
+    addedAt: {
+        type: Date,
+        default: Date.now
     }
 });
 
 export type CardType = {
     code: string;
     person: string;
+    addedAt: Date,
 }
 
 const Card = model("Card", cardSchema);
