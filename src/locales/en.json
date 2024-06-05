@@ -46,6 +46,7 @@
     "card.owner": "Card Owner",
     "card.addCard": "Add New Card",
     "card.noOwner": "-",
+    "card.deleteMessage": "are you sure you want delete the card ?",
     "errors.error": "Error",
     "errors.cardAlreadyUser": "the card is already used",
     "points.forms.change-points": "Add Or Remove From Points",

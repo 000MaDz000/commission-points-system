@@ -17,7 +17,9 @@ export default function LanguageSelectorSetting() {
                 <Select className="w-full" label={t("settings.language-selector")} labelId="language-selector" value={locale} onChange={onSelect}>
                     <MenuItem value="ar">Arabic</MenuItem>
                     <MenuItem value="en">English</MenuItem>
-                    <MenuItem value="fr">French</MenuItem>
+                    <MenuItem value="fr">Français</MenuItem>
+                    <MenuItem value="tr">Türkçe</MenuItem>
+                    <MenuItem value="es">Español</MenuItem>
                 </Select>
             </FormControl>
         </div>

@@ -70,7 +70,7 @@ export default function CardRow({ card, onChangeCardOwner, onDeleteCard }: CardR
 
                         <DialogContent>
                             <DialogContentText>
-                                are you sure you want delete the card ?
+                                {t("card.deleteMessage")}
                             </DialogContentText>
 
 
