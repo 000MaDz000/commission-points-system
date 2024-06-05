@@ -31,7 +31,7 @@ export default function DbCredentialsForm() {
     }, [username, password]);
 
     return (
-        <form className="flex flex-col gap-12 shadow p-16 bg-white w-[75%] lg:w-1/2" onSubmit={onsubmit}>
+        <form className="flex flex-col gap-12 shadow p-16 bg-white" onSubmit={onsubmit}>
             <h1 className="font-bold text-lg text-center">{t("db.credentials.login")}</h1>
 
             <div className="flex flex-col gap-5">

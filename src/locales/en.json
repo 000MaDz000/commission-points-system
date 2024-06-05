@@ -2,6 +2,8 @@
     "dialogs.delete.yesOrNo.Yes": "Delete",
     "dialogs.delete.yesOrNo.No": "Cancel",
     "db.credentials.login": "plesae write database account",
+    "db.url": "config database url",
+    "db.login": "login to database",
     "person.data.name": "Name",
     "person.data.nationalId": "National ID",
     "person.data.birthDate": "Birth Date",

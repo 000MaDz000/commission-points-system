@@ -17,15 +17,18 @@ export default function DbUrlSetting() {
     const [inputVal, setInputVal] = useState("");
     const [isFocused, setIsFocused] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
+    const [isPending, setIsPending] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
-        Db.getUrl().then((val) => setDbUrl(val as string));
+        Db.getUrl().then((val) => {
+            setDbUrl(val as string);
+            setIsPending(false);
+        });
     }, []);
 
     const onWantChange = () => {
         setIsFocused(true);
-        inputRef.current?.focus();
     }
 
     const onSave = () => {
@@ -35,7 +38,15 @@ export default function DbUrlSetting() {
         Db.setUrl(inputVal).then(() => {
             navigate("/");
         });
+        console.log("save");
+
     }
+
+    useEffect(() => {
+        if (isFocused) {
+            inputRef.current?.focus();
+        }
+    }, [isFocused]);
 
     const onBlur = () => {
         // if there is no input value, this means the user clicked on the change button
@@ -50,7 +61,7 @@ export default function DbUrlSetting() {
 
 
     return (
-        dbUrl ? (
+        dbUrl || !isPending ? (
             <div className="[&>*]:w-full flex flex-col gap-2">
                 {/* database url setting title */}
                 <Typography variant="h5">{t("settings.dburl")}</Typography>
@@ -59,6 +70,7 @@ export default function DbUrlSetting() {
                 <Box className="flex items-center">
                     <Input
                         value={isFocused ? undefined : dbUrl}
+                        disabled={!isFocused}
                         defaultValue={isFocused ? inputVal : undefined}
                         onChange={isFocused ? () => setInputVal(inputRef.current?.value as string) : undefined}
                         className="flex-grow" inputRef={inputRef}
@@ -75,6 +87,6 @@ export default function DbUrlSetting() {
                 </Box>
             </div>
         )
-            : <CircularProgress />
+            : isPending && <CircularProgress /> || null
     )
 }
