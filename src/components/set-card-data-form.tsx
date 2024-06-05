@@ -2,8 +2,9 @@ import { useState } from "react";
 import useTranslation from "../hooks/useTranslation";
 import Person from "../models/person";
 import Card from "../models/card";
+import { Tooltip, Typography } from "@mui/material";
 
-export default function Form({ cardId, onEnd }: { cardId: string, onEnd: () => void }) {
+export default function SetCardDataForm({ cardId, onEnd }: { cardId: string, onEnd: () => void }) {
     const [formData, setFormData] = useState({
         name: "",
         nationalId: "",
@@ -48,6 +49,12 @@ export default function Form({ cardId, onEnd }: { cardId: string, onEnd: () => v
 
     return (
         <form onSubmit={handleSubmit}>
+            <div className="flex justify-center mb-5">
+                <Tooltip title={t("card.data.id")}>
+                    <Typography>{cardId}</Typography>
+                </Tooltip>
+            </div>
+
             <div className="mb-4">
                 <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
                     {t("person.data.name")}

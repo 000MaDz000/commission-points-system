@@ -1,10 +1,10 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Tooltip } from "@mui/material";
 import useTranslation from "../hooks/useTranslation";
 import { useState } from "react";
 import RfidModal from "./rfid-modal";
 import { CardType } from "../models/card";
 import Close from "@mui/icons-material/Close";
+import { AddCircle } from "@mui/icons-material";
 
 export default function AddCardButton({ onAdd, cards }: { onAdd: (cardId: string) => void, cards: CardType[] }) {
     const { t } = useTranslation();
@@ -28,23 +28,27 @@ export default function AddCardButton({ onAdd, cards }: { onAdd: (cardId: string
     }
 
     return (
-        <div>
-            <Button startIcon={<AddCircleOutlineIcon />} title={t("person.card.add")} onClick={() => { setOpen(true) }} />
+        <Tooltip title={t("card.addCard")}>
+            <div>
+                <IconButton onClick={() => { setOpen(true) }}>
+                    <AddCircle />
+                </IconButton>
 
-            <Dialog color="error" open={errOpen} onClose={onCloseErr} fullWidth>
-                <DialogActions>
-                    <Button startIcon={<Close />} color={"error"} onClick={onCloseErr} />
-                </DialogActions>
+                <Dialog color="error" open={errOpen} onClose={onCloseErr} fullWidth>
+                    <DialogActions>
+                        <Button startIcon={<Close />} color={"error"} onClick={onCloseErr} />
+                    </DialogActions>
 
-                <div className="-mt-3 px-3">
-                    <DialogTitle color={"error"}>{t("errors.error")}</DialogTitle>
-                    <DialogContent color={"error"}>{t("errors.cardAlreadyUser")}</DialogContent>
-                </div>
-            </Dialog>
-            {
-                open &&
-                <RfidModal onClose={() => setOpen(false)} onCard={onAddCard} />
-            }
-        </div>
+                    <div className="-mt-3 px-3">
+                        <DialogTitle color={"error"}>{t("errors.error")}</DialogTitle>
+                        <DialogContent color={"error"}>{t("errors.cardAlreadyUser")}</DialogContent>
+                    </div>
+                </Dialog>
+                {
+                    open &&
+                    <RfidModal onClose={() => setOpen(false)} onCard={onAddCard} />
+                }
+            </div>
+        </Tooltip>
     )
 }
