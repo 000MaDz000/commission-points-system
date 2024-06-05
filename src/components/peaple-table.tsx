@@ -5,7 +5,7 @@ import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableHea
 import useTranslation from "../hooks/useTranslation";
 
 export type Peaple = PersonType & { _id: string };
-export default function PeapleTable() {
+export default function PeapleTable({ hover, onSelectPerson }: { hover?: boolean, onSelectPerson?: (person: Peaple) => void }) {
     const [peaple, setPeaple] = useState<Peaple[]>([]);
     const [allDocumentsCount, setAllDocumentsCount] = useState(0);
     const { t } = useTranslation();
@@ -51,10 +51,10 @@ export default function PeapleTable() {
 
         return (
             <>
-                <TableRow>
-                    <TableCell>{person.name}</TableCell>
-                    <TableCell colSpan={2}>{person.address}</TableCell>
-                    <TableCell>{currentYear() - person.birthDate.getFullYear()}</TableCell>
+                <TableRow hover={hover}>
+                    <TableCell onClick={() => onSelectPerson ? onSelectPerson(person) : undefined}>{person.name}</TableCell>
+                    <TableCell onClick={() => onSelectPerson ? onSelectPerson(person) : undefined} colSpan={2}>{person.address}</TableCell>
+                    <TableCell onClick={() => onSelectPerson ? onSelectPerson(person) : undefined}>{currentYear() - person.birthDate.getFullYear()}</TableCell>
                 </TableRow>
                 {renderPageData(index + 1)}
             </>
