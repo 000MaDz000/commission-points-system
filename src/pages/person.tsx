@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import PointsArrowChart from "../components/points-chart";
 import PersonCards from "../components/person-cards";
 import PointsContext from "../contexts/points";
+import Layout from "../components/layout";
 
 
 export default function PersonPage() {
@@ -21,13 +22,17 @@ export default function PersonPage() {
     }, [person, id, points]);
 
     return (
-        person &&
-        <div className="flex flex-col gap-2 min-w-screen p-5 min-h-screen">
-            <PersonInfo person={person} />
-            <PointsContext.Provider value={{ points: 0, "setPoints": (n) => setPoints(n) }}>
-                <PersonCards person={person} />
-                <PointsArrowChart person={person} />
-            </PointsContext.Provider>
-        </div>
+        <Layout>
+            {
+                person &&
+                <div className="flex flex-col gap-2 min-w-screen p-5 min-h-screen">
+                    <PersonInfo person={person} />
+                    <PointsContext.Provider value={{ points: 0, "setPoints": (n) => setPoints(n) }}>
+                        <PersonCards person={person} />
+                        <PointsArrowChart person={person} />
+                    </PointsContext.Provider>
+                </div>
+            }
+        </Layout>
     )
 }
