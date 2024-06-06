@@ -59,5 +59,7 @@
     "rfid.awaiter.message": "Por favor, ingrese la tarjeta de identificación",
     "settings.change-lang-title": "Idiomas",
     "settings.language-selector": "Seleccione su idioma",
-    "settings.dburl": "URL de la Base de Datos"
+    "settings.dburl": "URL de la Base de Datos",
+    "buttons.text.back": "Atrás",
+    "buttons.text.next": "Siguiente"
 }

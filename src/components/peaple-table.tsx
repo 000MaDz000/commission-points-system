@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react"
 import Person, { PersonType } from "../models/person";
 import { ObjectId } from "bson";
-import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
+import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import useTranslation from "../hooks/useTranslation";
 
 export type Peaple = PersonType & { _id: string };
@@ -30,7 +30,7 @@ export default function PeapleTable({ hover, onSelectPerson }: { hover?: boolean
             }
         }
 
-        const data = await Person.collection.find(query).limit(10).toArray();
+        const data = await Person.collection.find(query).sort({ _id: 1 }).limit(10).toArray();
         if (!allDocumentsCount) {
             setAllDocumentsCount(await Person.estimatedDocumentCount());
         }
@@ -79,7 +79,17 @@ export default function PeapleTable({ hover, onSelectPerson }: { hover?: boolean
                         </TableBody>
                     </Table>
 
-                    <TablePagination onPageChange={(_ev, page) => setPage(page)} rowsPerPage={10} page={page} count={allDocumentsCount} component={Paper}></TablePagination>
+                    <TablePagination onPageChange={(_ev, page) => setPage(page)} rowsPerPage={10} page={page} count={allDocumentsCount} component={Paper} getItemAriaLabel={(data) => {
+                        switch (data) {
+                            case "previous":
+                                return t("buttons.text.back") as string;
+
+                            case "next":
+                                return t("buttons.text.next");
+                            default:
+                                return "";
+                        }
+                    }}></TablePagination>
                 </TableContainer>
             </Paper>
         </Container>

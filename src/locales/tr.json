@@ -59,5 +59,7 @@
     "rfid.awaiter.message": "lütfen kimlik kartını girin",
     "settings.change-lang-title": "Diller",
     "settings.language-selector": "Dil Seçiniz",
-    "settings.dburl": "veritabanı URL'si"
+    "settings.dburl": "veritabanı URL'si",
+    "buttons.text.back": "Geri",
+    "buttons.text.next": "İleri"
 }

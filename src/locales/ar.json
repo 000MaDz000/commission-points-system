@@ -59,5 +59,7 @@
     "rfid.awaiter.message": "الرجاء إدخال بطاقة التعريف",
     "settings.change-lang-title": "اللغات",
     "settings.language-selector": "اختر لغتك",
-    "settings.dburl": "عنوان قاعدة البيانات"
+    "settings.dburl": "عنوان قاعدة البيانات",
+    "buttons.text.back": "رجوع",
+    "buttons.text.next": "التالي"
 }
